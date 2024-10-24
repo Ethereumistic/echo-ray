@@ -79,25 +79,68 @@ export const Menu = ({
 
 export const ProductItem = ({
   title,
+  subtitle,
   description,
+  subdescription,
   href,
   src,
+  link,
+  buttons,
+  products,
 }: {
   title: string;
+  subtitle?: string;
   description: string;
+  subdescription?: string;
   href: string;
   src: string;
+  link?: string[];
+  buttons?: string[]; // Accept an array of button labels
+  products?: string[]; // Accept an array of button labels
+
+    
 }) => {
   return (
-    <Link href={href} className="flex space-x-2">
+    <div>
+    <div className="flex space-x-2 ">
 
       <div>
-        <h4 className="text-xl font-bold mb-1 text-green ">
-          {title}
-        </h4>
-        <p className="text-white text-sm max-w-[10rem]">
-          {description}
-        </p>
+        <div className="flex flex-row ">
+
+            <div className="flex flex-col">
+                <h4 className="text-xl font-bold mb-1 text-green mx-12">
+                {title}
+                </h4>
+
+                <Link href="/" className="text-white text-sm  flex-col flex rounded-lg ">
+                {products && products.map((productLabel, index) => (
+                  <button key={index} className="inline-flex mx-auto hover:bg-zinc-500/[0.5]   rounded-lg">
+                    <p className=" px-4 py-2 whitespace-nowrap">
+                    {productLabel}
+                    </p>
+                  </button>
+                ))}
+                </Link>
+            </div>
+
+            <div>
+                <h4 className="text-xl font-bold mb-1 text-green mx-12">
+                {subtitle}
+                </h4>
+                <Link href="/" className="text-white text-sm  flex-col flex rounded-lg ">
+                {buttons && buttons.map((buttonLabel, index) => (
+                  <button key={index} className="inline-flex mx-auto hover:bg-zinc-500/[0.5]   rounded-lg">
+                    <p className=" px-4 py-2 whitespace-nowrap">
+                    {buttonLabel}
+                    </p>
+                  </button>
+                ))}
+                </Link>
+            </div>
+
+        </div>
+
+
       </div>
       <Image
         src={src}
@@ -106,7 +149,8 @@ export const ProductItem = ({
         alt={title}
         className="flex-shrink-0 rounded-md shadow-2xl"
       />
-    </Link>
+    </div>
+    </div>
   );
 };
 
