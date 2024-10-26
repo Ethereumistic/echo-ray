@@ -84,7 +84,7 @@ export const ProductItem = ({
   subdescription,
   href,
   src,
-  link,
+  links,
   buttons,
   products,
 }: {
@@ -94,7 +94,7 @@ export const ProductItem = ({
   subdescription?: string;
   href: string;
   src: string;
-  link?: string[];
+  links?: string[];
   buttons?: string[]; // Accept an array of button labels
   products?: string[]; // Accept an array of button labels
 
@@ -112,44 +112,41 @@ export const ProductItem = ({
                 {title}
                 </h4>
 
-                <Link href="/" className="text-white text-sm  flex-col flex rounded-lg ">
-                {products && products.map((productLabel, index) => (
-                  <button key={index} className="inline-flex mx-auto hover:bg-zinc-500/[0.5]   rounded-lg">
-                    <p className=" px-4 py-2 whitespace-nowrap">
-                    {productLabel}
+                {products && links && products.map((productLabel, index) => (
+                <Link key={index} href={links[index]} className="text-white text-sm flex-col flex rounded-lg ">
+                  <button className="inline-flex mx-auto hover:bg-zinc-500/[0.5] rounded-lg">
+                    <p className="px-4 py-2 whitespace-nowrap">
+                      {productLabel}
                     </p>
                   </button>
-                ))}
                 </Link>
+              ))}
             </div>
 
             <div>
                 <h4 className="text-xl font-bold mb-1 text-green mx-12">
                 {subtitle}
                 </h4>
-                <Link href="/" className="text-white text-sm  flex-col flex rounded-lg ">
-                {buttons && buttons.map((buttonLabel, index) => (
-                  <button key={index} className="inline-flex mx-auto hover:bg-zinc-500/[0.5]   rounded-lg">
-                    <p className=" px-4 py-2 whitespace-nowrap">
-                    {buttonLabel}
+                {buttons && links && buttons.map((buttonLabel, index) => (
+                <Link key={index} href={links[index]} className="text-white text-sm flex-col flex rounded-lg ">
+                  <button className="inline-flex mx-auto hover:bg-zinc-500/[0.5] rounded-lg">
+                    <p className="px-4 py-2 whitespace-nowrap">
+                      {buttonLabel}
                     </p>
                   </button>
-                ))}
                 </Link>
+              ))}
             </div>
-
+          </div>
         </div>
-
-
+        <Image
+          src={src}
+          width={280}
+          height={140}
+          alt={title}
+          className="flex-shrink-0 rounded-md shadow-2xl"
+        />
       </div>
-      <Image
-        src={src}
-        width={280}
-        height={140}
-        alt={title}
-        className="flex-shrink-0 rounded-md shadow-2xl"
-      />
-    </div>
     </div>
   );
 };

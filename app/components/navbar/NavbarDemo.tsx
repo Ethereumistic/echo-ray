@@ -4,6 +4,7 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "./navbar-menu";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
+import { IconUser } from "@tabler/icons-react";
 
 export function NavbarDemo() {
   return (
@@ -49,13 +50,14 @@ function Navbar({ className }: { className?: string }) {
               subdescription="AlgoChurn is a platform that helps you prepare for tech interviews like never before. It is a platform that helps you prepare for tech interviews like never before."
               buttons={["AI Chat", "Management Dashboard", "Analytics"]}
               products={["EchoRay XYZ", "Why EchoRay", "What's New"]}
-              link={["/web-dev", "/interface-design", "/seo",]}
+              links={["/fred", "/interface-design", "/seo",]}
             />
             <ProductItem
               title="Document Management"
               href="https://tailwindmasterkit.com"
               src="https://assets.aceternity.com/demos/tailwindmasterkit.webp"
               description="Production ready Tailwind css components for your next project"
+              links={["/web-dev", "/interface-design", "/seo",]}
             />
 
           </div>
@@ -72,10 +74,17 @@ function Navbar({ className }: { className?: string }) {
     </Menu>
 
 
+    <div className="flex items-center space-x-4">
+    <Link href="/login" className="flex items-center mx-16 bg-green px-4 py-2 rounded-lg text-black"> {/* Right section for Sign In button */}
+    <IconUser />
+        </Link>
+
+
     <Link href="/get-started" className="flex items-center mx-16 bg-green px-4 py-2 rounded-lg text-black"> {/* Right section for Sign In button */}
     Get Started {/* Added Sign In button */}
         </Link>
-      </div>
+        </div>
+    </div>
 
 
   </div>
