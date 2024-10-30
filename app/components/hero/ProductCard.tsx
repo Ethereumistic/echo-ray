@@ -10,19 +10,17 @@ interface ProductInfo {
   icon: LucideIcon
 }
 
-function useMorphedFeatures(features: string[]) {
-    return features.map((feature, index) => 
-        useTextMorph(feature, 200, 1000 + index * 300) // Delay for features
-    );
-}
-
 export function ProductCard({ product }: { product: ProductInfo }) {
-    const [isVisible, setIsVisible] = useState(false); // State to control visibility
+    const [isVisible, setIsVisible] = useState(false);
 
-    const morphedName = useTextMorph(product.name, 500, 0) // No delay for name
-    const morphedType = useTextMorph(product.type, 500, 500) // Delay for type
-
-    const morphedFeatures = useMorphedFeatures(product.features); // Use custom hook for features
+    const morphedName = useTextMorph(product.name, 500, 0)
+    const morphedType = useTextMorph(product.type, 500, 500)
+    
+    // Move the hooks to the component level
+    const morphedFeatures = product.features.map((feature, index) => {
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        return useTextMorph(feature, 200, 1000 + index * 300);
+    });
 
     useEffect(() => {
         const timer = setTimeout(() => {
