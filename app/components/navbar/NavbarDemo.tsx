@@ -19,7 +19,7 @@ function Navbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
   return (
     <div
-      className={cn("flex top-10 inset-x-0 w-full mx-auto h-20 z-50 bg-gradient-to-b from-zinc-600/[0.5] to-zinc-500/[0.5] ", className)}
+      className={cn("flex top-10 inset-x-0 w-full mx-auto h-20 z-50 bg-gradient-to-b from-zinc-700/[0.5] to-zinc-900/[0.5] ", className)}
     >
   <div className="flex-grow flex justify-between items-center text-lg">
   <Link href="/" className="flex items-center mx-16"> {/* Logo on the left */}
@@ -74,7 +74,7 @@ function Navbar({ className }: { className?: string }) {
     </Menu>
 
 
-    <div className="flex items-center space-x-4">
+    <div className="flex items-center space-x-4 me-8">
     <Link href="/login" className="flex items-center mx-16 bg-green px-4 py-2 rounded-lg text-black"> {/* Right section for Sign In button */}
     <IconUser />
         </Link>
