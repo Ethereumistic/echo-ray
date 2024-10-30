@@ -16,9 +16,9 @@ export function ProductCard({ product }: { product: ProductInfo }) {
     const morphedName = useTextMorph(product.name, 500, 0) // No delay for name
     const morphedType = useTextMorph(product.type, 500, 500) // Delay for type
 
-    const morphedFeatures = product.features.map((feature, index) => 
-        useTextMorph(feature, 200, 1000 + index * 300) // Delay for features
-      );
+    const morphedFeatures = product.features.map((feature, index) => {
+        return useTextMorph(feature, 200, 1000 + index * 300); // Delay for features
+    });
 
       useEffect(() => {
         const timer = setTimeout(() => {
